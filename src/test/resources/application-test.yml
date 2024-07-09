@@ -1,0 +1,22 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name:
+      securitycore
+  profiles:
+    active: local
+
+  data:
+    mongodb:
+      host: 0.0.0.0
+      port: 27017
+      authentication-database: admin
+      database: museek
+      username: rootuser
+      password: rootpass
+      auto-index-creation: true
+
+
+host: localhost:8090

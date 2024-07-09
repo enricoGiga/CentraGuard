@@ -1,0 +1,19 @@
+
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: CentraGuard
+
+    ports:
+      - target: 5432
+        published: 5434
+        protocol: tcp
+        mode: host
+    environment:
+      - POSTGRES_USER=enrico
+      - POSTGRES_DB=ocr_db
+      - POSTGRES_PASSWORD=password
+#    volumes:
+#      - ./init_data.sql:/docker-entrypoint-initdb.d/init_data.sql

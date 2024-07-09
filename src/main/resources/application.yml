@@ -1,0 +1,64 @@
+#spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+
+server:
+  port: 8080
+
+spring:
+
+  application:
+    name:
+      security
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5434/ocr_db
+    username: enrico
+    password: password
+  jpa:
+    show-sql: true
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+
+      ddl-auto: none
+application:
+  jwt:
+    secretKey: securesecuresecuresecuresecuresecuresecuresecure
+    tokenPrefix: Bearer
+    tokenExpirationDateInMs: 86400000 #3600000 #10000  #86400000
+
+
+management:
+  endpoint:
+    health:
+      show-details: when_authorized
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+zuul:
+  routes:
+    ocr_api:
+      url: http://localhost:8090
+
+
+
+# ==============================================================
+# = Actuator Info
+# ==============================================================
+info:
+  technical_assistance:
+    nome: "Enrico Gigante"
+  nome:
+    nome-app: "CentralGuard"
+logging:
+  level:
+    web: info
+    root: info
+    org:
+      springframework:
+        web: debug
+      hibernate: error
+
+
