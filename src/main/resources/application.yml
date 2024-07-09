@@ -40,6 +40,7 @@ management:
 zuul:
   routes:
     ocr_api:
+      path: /ocr_api/**
       url: http://localhost:8090
 
 
@@ -51,7 +52,7 @@ info:
   technical_assistance:
     nome: "Enrico Gigante"
   nome:
-    nome-app: "CentralGuard"
+    nome-app: "CentraGuard"
 logging:
   level:
     web: info
